@@ -1,1 +1,1 @@
-Adding utility scripts for usage with Fedora
+## Simple repository with useful scripts with Fedora
