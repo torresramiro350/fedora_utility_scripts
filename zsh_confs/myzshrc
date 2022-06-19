@@ -133,7 +133,7 @@ alias hc="history -c"
 alias hg="history | grep"
 
 alias t="htop"
-alias st="speedtest"
+alias st="speedtest-cli"
 
 # grep with color and show the line
 alias grep="grep -n --color"
@@ -207,7 +207,7 @@ alias flatinstall="flatpak install flathub"
 
 # alias for dnf (fedora's package manager)
 alias dnfcheck="dnf check-update"
-alias dnfupg="sudo dnf upgrade --refresh"
+alias dnfupg="sudo dnf upgrade"
 alias dnfsearch="dnf search"
 alias dnfinstall="sudo dnf install"
 alias dnfrm="sudo dnf remove"
@@ -223,12 +223,12 @@ alias condarmenv='conda remove --all --name' # remove enviornment and all its pa
 alias condalist='conda list' # list all installed packages in current environment
 alias condaclean='conda clean --all' #clean unused packages
 
-#export PATH="/home/rtorres/.local/bin:$PATH"
-export PATH="/home/rtorres/.cargo/bin:$PATH"
-# export GTK_USE_PORTAL=1
 
+# launch fv
+alias fv="$HOME/fv5.5.2/fv"
+alias ds9="$HOME/fv5.5.2/ds9"
+
+export PATH="/home/rtorres/.cargo/bin:$PATH"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-
