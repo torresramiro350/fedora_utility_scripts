@@ -1,0 +1,2 @@
+# prevent vscode from using gtk file picker
+GTK_USE_PORTAL=1
