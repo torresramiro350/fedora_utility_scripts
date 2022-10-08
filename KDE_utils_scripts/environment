@@ -1,2 +1,11 @@
-# prevent vscode from using gtk file picker
+#
+# This file is parsed by pam_env module
+#
+# Syntax: simple "KEY=VAL" pairs on separate lines
+#
+#QT_QPA_PLATFORMTHEME=qt5ct
+#QT_STYLE_OVERRIDE=kvantum
 GTK_USE_PORTAL=1
+XDG_CURRENT_DESKTOP=KDE
+BROWSER=firefox
+EDITOR=nano

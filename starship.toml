@@ -19,7 +19,7 @@ charging_symbol = "⚡️ "
 discharging_symbol = "💀 "
 
 [[battery.display]]
-threshold=10
+threshold = 10
 style = "bold red"
 
 [[battery.display]]
@@ -47,10 +47,10 @@ ssh_only = false
 format = "[$hostname]($style) in "
 # format = '[$ssh_symbol](bold blue) on [$hostname](bold green) '
 disabled = false
-trim_at="-"
+trim_at = "-"
 
 [directory]
-style="blue"
+style = "blue"
 truncate_to_repo = true
 truncation_length = 2
 truncation_symbol = "../"
@@ -59,8 +59,8 @@ truncation_symbol = "../"
 # symbol = " "
 
 [conda]
-symbol="\U0001f47e "
+symbol = "\U0001f47e "
 # symbol="\U0001f40d "
 
-[c]
-symbol = " "
+# [c]
+# symbol = " "
