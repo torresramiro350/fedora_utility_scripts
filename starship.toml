@@ -1,16 +1,39 @@
-
+palette = "catppuccin_macchiato"
 format = """
-[┌─\\(](green)$directory$git_branch$git_status$memory_usage$conda$cmd_duration[\\)](green)$fill[\\(](green)$username$hostname$sudo[\\)](green)
-[└─\\(](green)$time[\\)-](green)$character"""
-add_newline = false
+[$directory](bold cyan)($git_branch$git_state$git_status$conda$python$cpp$cmake$lua$rust$cmd_duration)
+$time $hostname $username [ ](bold green) """
+
+# format = """
+# [┌─\\(](green)$directory$git_branch$git_status$memory_usage$conda$cmd_duration[\\)](green)$fill[\\(](green)$username$hostname$sudo[\\)](green)
+# [└─\\(](green)$time[\\)-](green)$character"""
+# format = """
+# [┌─\\(](mauve)$directory$git_branch$git_status$memory_usage$conda$cmd_duration[\\)](mauve)$fill[\\(](mauve)$username$hostname$sudo[\\)](mauve)
+# [└─\\(](mauve)$time[\\)](mauve)$character"""
+# add_newline = false
 
 [git_branch]
-style = "bold #c678dd"
-format = " [$symbol$branch]($style) "
+style = "mauve"
+symbol = " "
+format = "[$symbol$branch]($style) "
 
 [git_status]
-style = "bold #c678dd"
+style = "mauve"
 format = '([$all_status$ahead_behind]($style))'
+conflicted = "💥 x$count"
+ahead = "🏎💨 x$count "
+behind = "😰 x$count "
+diverged = "😵 x$count "
+up_to_date = "✅ "
+untracked = "🙈 x$count "
+stashed = "📦 x$count "
+modified = "📝 x$count"
+staged = '[++\($count\)](green)'
+renamed = "👅"
+deleted = "🗑"
+
+[git_commit]
+commit_hash_length = 4
+tag_symbol = '🔖 '
 
 [fill]
 symbol = " "
@@ -20,28 +43,28 @@ style = "bold green"
 disabled = false
 
 [username]
-# style_user = "bold blue"
-style_user = "bold #abb2bf"
-style_root = "bold red"
-format = " [$user]($style)@"
+style_root = "red"
+style_user = "sky"
+format = "[$user]($style)"
 disabled = false
 show_always = true
 
 
 [hostname]
 ssh_only = false
-style = "bold #E06C75"
-format = "[$hostname]($style) "
+ssh_symbol = " "
+style = "green"
+format = "[$hostname]($style)"
 disabled = false
 trim_at = "-"
 
 [character]
-error_symbol = "[×](bold red)"
-success_symbol = "[>](green)"
+error_symbol = "[ ✖ ](bold red)"
+success_symbol = "[  ](pink)"
 
 [time]
 disabled = false
-style = "bold #56B6C2"
+style = "teal"
 format = '[$time]($style)'
 # format = '🕙[\[ $time \]]($style) '
 time_format = "%T"
@@ -49,13 +72,16 @@ utc_time_offset = "+8" # for China
 
 [memory_usage]
 disabled = false
-threshold = -1
+# threshold = -1
+threshold = 70
 symbol = "🐏"
-style = "bold #42b983"
+style = "green"
+format = 'via $symbol [${ram}( | ${swap})]($style) '
 
 [sudo]
-style = "bold red"
-symbol = "🧙 "
+# style = "bold red"
+style = "red"
+# symbol = "🧙 "
 disabled = false
 
 [battery]
@@ -69,32 +95,152 @@ style = "bold red"
 
 [[battery.display]]
 threshold = 30
-style = "bold yellow"
+style = "bold flamingo"
 discharging_symbol = "💦"
 
 [cmd_duration]
 min_time = 120
-format = "[$duration](bold #61afef)"
+# format = "[$duration](bold #61afef)"
+format = "[$duration](bold blue)"
 
-# [localip]
-# ssh_only = false
-# # format = "@[$localipv6](bold red) "
-# format = "@[$localipv4](bold red) "
+[localip]
+ssh_only = false
+# format = "@[$localipv6](bold red) "
+format = "@[$localipv4](bold red) "
 # disabled = true
 
+[directory.substitutions]
+"Documents" = " "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+
 [directory]
-# style = "bold #e5c07b"
-style = "bold #d19a66"
+format = "[ $path ]($style)"
+style = "peach"
 truncate_to_repo = true
 truncation_length = 3
-truncation_symbol = "./"
-# truncation_symbol = "../"
+truncation_symbol = "../"
 
-# [python]
-# symbol = " "
+
+[palettes.catppuccin_macchiato]
+rosewater = "#f4dbd6"
+flamingo = "#f0c6c6"
+pink = "#f5bde6"
+mauve = "#c6a0f6"
+red = "#ed8796"
+maroon = "#ee99a0"
+peach = "#f5a97f"
+yellow = "#eed49f"
+green = "#a6da95"
+teal = "#8bd5ca"
+sky = "#91d7e3"
+sapphire = "#7dc4e4"
+blue = "#8aadf4"
+lavender = "#b7bdf8"
+text = "#cad3f5"
+subtext1 = "#b8c0e0"
+subtext0 = "#a5adcb"
+overlay2 = "#939ab7"
+overlay1 = "#8087a2"
+overlay0 = "#6e738d"
+surface2 = "#5b6078"
+surface1 = "#494d64"
+surface0 = "#363a4f"
+base = "#24273a"
+mantle = "#1e2030"
+crust = "#181926"
+
+[aws]
+symbol = "  "
+
+[buf]
+symbol = " "
+
+[c]
+symbol = " "
 
 [conda]
-symbol = "👾 "
+symbol = " "
 
-# [c]
-# symbol = " "
+
+[docker_context]
+symbol = " "
+
+[elixir]
+symbol = " "
+
+[elm]
+symbol = " "
+
+[fossil_branch]
+symbol = " "
+
+[golang]
+symbol = " "
+
+[haxe]
+symbol = "⌘ "
+
+[hg_branch]
+symbol = " "
+
+[java]
+symbol = " "
+
+[lua]
+symbol = " "
+
+
+[nodejs]
+symbol = " "
+
+[os.symbols]
+Alpaquita = " "
+Alpine = " "
+Amazon = " "
+Android = " "
+Arch = " "
+Artix = " "
+CentOS = " "
+Debian = " "
+DragonFly = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Garuda = "﯑ "
+Gentoo = " "
+HardenedBSD = "ﲊ "
+Illumos = " "
+Linux = " "
+Mabox = " "
+Macos = " "
+Manjaro = " "
+Mariner = " "
+MidnightBSD = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+OpenBSD = " "
+openSUSE = " "
+OracleLinux = " "
+Pop = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+Redox = " "
+Solus = "ﴱ "
+SUSE = " "
+Ubuntu = " "
+Unknown = " "
+Windows = " "
+
+[package]
+symbol = " "
+
+[python]
+symbol = " "
+
+[rust]
+symbol = " "
